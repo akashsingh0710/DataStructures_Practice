@@ -1,0 +1,68 @@
+'''
+	Your task is to return the index of the pattern
+	present in the given string.
+	
+	Function Arguments: s (given text), p(given pattern)
+	Return Type: Integer.
+	
+'''
+def strstr(s,x):
+    #code here
+    if len(x)>len(s):
+        return -1
+    
+    j=0;
+    i=0;
+    while( i<len(s)):
+        
+        if j==len(x):
+            return k
+        
+        elif s[i]==x[j]:
+            if j==0:
+                k=i;
+            j=j+1;
+        
+        elif j>0 and s[i]!=x[j]:
+            j=0
+            i=k
+            
+        # print(j)
+        
+        i=i+1;
+        
+    if j==len(x):
+        return k
+        
+    return -1        
+    
+            
+    
+    
+    
+#{ 
+#  Driver Code Starts
+#Contributed by : Nagendra Jha
+
+import atexit
+import io
+import sys
+
+_INPUT_LINES = sys.stdin.read().splitlines()
+input = iter(_INPUT_LINES).__next__
+_OUTPUT_BUFFER = io.StringIO()
+sys.stdout = _OUTPUT_BUFFER
+
+@atexit.register
+
+def write():
+    sys.__stdout__.write(_OUTPUT_BUFFER.getvalue())
+
+if __name__ == '__main__':
+    t=int(input())
+    for cases in range(t):
+        s,p =input().strip().split()
+        print(strstr(s,p))
+
+
+# } Driver Code Ends

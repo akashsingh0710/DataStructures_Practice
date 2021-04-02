@@ -1,0 +1,40 @@
+
+
+class Solution:
+    # User function Template for python3
+    
+    def reverseWords(self,S):
+        # code here 
+         
+        frs=""
+        rev=""
+        
+        for i in range(0,len(S)):
+            
+            if(S[i]!='.'):
+                frs=frs+S[i]    
+            
+            if(S[i]=='.' or i==len(S)-1):
+                
+                rev=frs+"."+rev
+                frs=""
+                
+        abcd = rev[:len(S)]
+        return abcd
+        
+            
+
+
+
+#{ 
+#  Driver Code Starts
+# Initial Template for Python 3
+
+if __name__ == '__main__':
+    t = int(input())
+    for i in range(t):
+        s = str(input())
+        obj = Solution()
+        print(obj.reverseWords(s))
+
+# } Driver Code Ends

@@ -1,0 +1,17 @@
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+        
+    if (root==NULL || (root->right==NULL && root->left== NULL) ){return root;}
+        invertTree(root->left);
+        invertTree(root->right); 
+         
+         TreeNode*t = root->right;
+         root->right= root->left;
+         root->left = t;
+    
+     return root;   
+    }
+        
+    
+};

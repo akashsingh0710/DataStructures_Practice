@@ -1,0 +1,57 @@
+#User function Template for python3
+
+class Solution:
+    def find_permutation(self, S):
+        temp=S
+        S = ''.join(sorted(temp)) 
+            
+        
+        def tree(str_f,k,i):
+
+            if len(str_f)==n:
+                arr.append(str_f) 
+                # print(arr)
+                return arr
+                
+            elif i<n:
+                for i in range(0,n):
+                    if A[i]==0:
+                        str_f = str_f+S[i]
+                        # print(str_f)
+                        A[i]=1
+                        # print(A,i,k+1,str_f)
+                        tree(str_f,k+1,i)
+                        A[i]=0
+                        str_f=str_f[:-1]
+        
+            return arr
+        
+        
+        i=0    
+        n = len(S)
+        str_f =""
+        A=[0]*n
+        arr = []
+        k=0
+        
+        arr_2 = tree(str_f,k,i) 
+        return arr_2
+        
+            
+                
+ 
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+
+if __name__ == '__main__':
+	t=int(input())
+	for i in range(t):
+		S=input()
+		ob = Solution()
+		ans = ob.find_permutation(S)
+		for i in ans:
+			print(i,end=" ")
+		print()
+# } Driver Code Ends

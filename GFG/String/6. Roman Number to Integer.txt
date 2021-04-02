@@ -1,0 +1,66 @@
+#User function Template for python3
+
+def rank2(htt):
+    # print('asf')
+    
+    if htt=='I':
+        return 1
+    elif htt=='V':
+        return 5
+    elif htt=='X':
+        return 10 
+    elif htt=='L':
+        return 50 
+    elif htt=='C':
+        return 100 
+    elif htt=='D':
+        return 500 
+    elif htt=='M':
+        return 1000   
+
+
+
+def romanToDecimal(str1):
+    # code here
+    temp =0;
+    
+    A = [1]*len(str1)
+    
+    for i in range(len(str1)-1,0,-1):
+        if rank2(str1[i-1]) < rank2(str1[i]):
+            
+            A[len(str1)-i]= -1
+    
+    
+    for i in range(0,len(str1)):
+        
+        # print(A[i])
+        
+        if str1[i]=='I':
+            temp = temp +A[len(str1)-i-1]*1
+        elif str1[i]=='V':
+            temp = temp +A[len(str1)-i-1]*5
+        elif str1[i]=='X':
+            temp = temp +A[len(str1)-i-1]*10 
+        elif str1[i]=='L':
+            temp = temp +A[len(str1)-i-1]*50 
+        elif str1[i]=='C':
+            temp = temp +A[len(str1)-i-1]*100 
+        elif str1[i]=='D':
+            temp = temp +A[len(str1)-i-1]*500 
+        elif str1[i]=='M':
+            temp = temp +A[len(str1)-i-1]*1000    
+            
+    return temp        
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+
+
+
+if __name__=='__main__':
+    t = int(input())
+    for _ in range(t):
+        print(romanToDecimal(str(input())))
+# } Driver Code Ends

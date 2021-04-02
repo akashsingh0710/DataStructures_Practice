@@ -1,0 +1,164 @@
+#User function Template for python3
+
+''' Node for linked list:
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+'''
+class Solution:
+    #Function to add two numbers represented by linked list.
+    def addTwoLists(self, first, second):
+        
+        
+        # code here
+        # return head of sum list
+        
+        chck_f = first
+        chck_s = second
+        num_f=0
+        num_s=0
+        
+        while(chck_f!=None):
+            num_f+=1
+            chck_f=chck_f.next
+            
+        while(chck_s!=None):
+            num_s+=1
+            chck_s=chck_s.next    
+        
+        A = [0]*(num_f+num_s)
+        sum_f=0
+        sum_s=0
+        
+        chck_f = first
+        chck_s = second
+        
+        while(chck_f!=None):
+            sum_f=sum_f+(chck_f.data)*pow(10,num_f-1)
+            num_f = num_f - 1
+            chck_f=chck_f.next
+        
+        while(chck_s!=None):
+            sum_s=sum_s+(chck_s.data)*pow(10,num_s-1)
+            num_s = num_s - 1
+            chck_s=chck_s.next
+            
+        val_num = sum_f+sum_s
+        
+        i=0
+        # import math
+        
+        num_temp = val_num
+        while(num_temp != 0):
+            A[i] = num_temp%10
+            num_temp = int(num_temp//10)
+            i=i+1
+        
+        
+        # print(A)
+        tail = None
+        head = None
+        n=0
+        
+        for j in range(len(A)-1 , -1 , -1):
+            if A[j]!=0:
+                n=1
+            if n==1:
+                node_temp = Node(A[j])
+                if tail == None:
+                    head = node_temp
+                    tail = node_temp
+                else:
+                    tail.next = node_temp
+                    tail = node_temp
+        
+        return head        
+                
+        
+        
+        # head = Node(first.data+second.data)
+        # tail = head 
+        
+        # tempf = first.next
+        # temps = second.next
+        
+        # while(tempf!=None and temps!=None):
+            
+        #     node_temp = Node(tempf.data+temps.data )
+            
+        #     tail.next = node_temp
+        #     tail = node_temp
+            
+        #     tempf= tempf.next
+        #     temps= temps.next
+            
+        # if tempf==None:
+        #     tail.next = temps
+        # else:
+        #     tail.next = tempf
+        # if tempf == None:
+            
+        # else:
+        #     global_head = first
+            
+        # temp = global_head  
+        
+        
+          
+        
+        
+        
+
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+# Node Class
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+# Linked List Class
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    # creates a new node with given value and appends it at the end of the linked list
+    def insert(self, val):
+        if self.head is None:
+            self.head = Node(val)
+            self.tail = self.head
+        else:
+            self.tail.next = Node(val)
+            self.tail = self.tail.next
+
+# prints the elements of linked list starting with head
+def printList(n):
+    while n:
+        print(n.data,end=' ')
+        n = n.next
+    print()
+
+if __name__ == '__main__':
+    for _ in range(int(input())):
+        
+        n = int(input())
+        arr1 = ( int(x) for x in input().split() )
+        LL1 = LinkedList()
+        for i in arr1:
+            LL1.insert(i)
+        
+        m = int(input())
+        arr2 = ( int(x) for x in input().split() )
+        LL2 = LinkedList()
+        for i in arr2:
+            LL2.insert(i)
+        
+        res = Solution().addTwoLists(LL1.head, LL2.head)
+        printList(res)
+# } Driver Code Ends

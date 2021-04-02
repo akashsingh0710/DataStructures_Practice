@@ -1,0 +1,141 @@
+"""  list Node is as defined below:
+
+class Node:
+    def __init__(self, data):
+		self.data = data
+		self.next = None
+
+"""
+
+# complete this function
+# return head of list after swapping
+class Solution:    
+    def pairWiseSwap(self, head):
+        
+        temp = head
+        num = 0
+        while(temp!=None and num<6):
+            num = num + 1
+            temp = temp.next
+        
+        if num==1:
+            return head
+        
+        org_head = head
+        head_next = head.next
+        head = head.next
+        org_head.next = head.next
+        head.next = org_head
+        
+        if num<=3:
+            return head
+            
+        prev = org_head
+        first = prev.next
+        second = first.next
+        forw = second.next 
+        
+        k=0
+        
+        
+        # forw!=None or forw.next!=None or prev!=None
+        
+        while(k==0):
+            
+            prev.next = second 
+            second.next = first
+            first.next = forw
+            
+            # print(prev.data)
+            # print(forw.data)
+            
+            
+            prev = first
+            first = forw
+            if first == None:
+                return head
+            second = first.next
+            if second == None:
+                return head
+            forw = second.next
+            if forw==None:
+                prev.next = second
+                second.next = first
+                first.next = None
+                return head
+                
+            
+            # k=k+1
+            
+        return head   
+            
+            
+            
+        
+
+
+
+
+
+
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+    
+    def insert(self,val):
+        if self.head is None:
+            self.head = Node(val)
+            self.tail = self.head
+        else:
+            self.tail.next = Node(val)
+            self.tail = self.tail.next
+
+def printList(n):
+    while n:
+        print(n.data, end=' ')
+        n = n.next
+    print()
+
+if __name__=="__main__":
+    for _ in range(int(input())):
+        n = int(input())
+        arr = [int(x) for x in input().split()]
+        
+        lis = LinkedList()
+        for i in arr:
+            lis.insert(i)
+            
+        dict1 = {}
+        temp = lis.head
+        while temp:
+            dict1[temp] = temp.data
+            temp = temp.next
+        
+        failure = LinkedList()
+        failure.insert(-1)
+        
+        head = Solution().pairWiseSwap(lis.head)
+        
+        temp = head
+        f = 0
+        while temp:
+            if dict1[temp] != temp.data:
+                f = 1;
+            temp = temp.next
+        
+        if f:
+            printList(failure)
+        else:
+            printList(head)
+
+# } Driver Code Ends

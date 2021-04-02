@@ -1,0 +1,56 @@
+
+
+class Solution:
+    # your task is to complete this function
+    # function should return an integer
+    def atoi(self,string):
+        # Code here
+        temp=0
+        k=1
+        x=1
+        A=[-1]*len(string)
+        
+        if string[0] == '-':
+            j = 1
+            sign = -1
+        else:
+            j = 0
+            sign = 1
+    
+        i= len(string)-1
+        
+        while (i >= j):
+            
+            if ord(string[i])<=ord('9') and ord(string[i])>=ord('0'):
+                temp = temp + k*(ord(string[i])-ord('0'))
+                k=k*10
+                i = i-1
+            else:
+                return -1
+        
+                
+        # for i in range(0,len(string)):
+        #     print(A[i])
+                
+        # for i in range(len(string)-1,-1,-1):
+        #     if i<len(string)-1:
+        #         x=j*x
+                
+        #     temp= temp+x*A[i]        
+        #     print(temp)
+            
+                
+        return sign*temp
+        
+        
+        
+
+#{ 
+#  Driver Code Starts
+if __name__=='__main__':
+    t=int(input())
+    for i in range(t):
+        string = input().strip();
+        ob=Solution()
+        print(ob.atoi(string))
+# } Driver Code Ends

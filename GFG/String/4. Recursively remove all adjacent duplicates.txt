@@ -1,0 +1,26 @@
+def remove_dups(s):
+   n = len(s)
+   bool_str = n*[0]
+   for i in range(0,n-1):
+       if(s[i]==s[i+1]):
+           bool_str[i]=bool_str[i+1]=1
+   final_str=""
+   
+   for i in range(0,n):
+       if (bool_str[i]==0):
+           final_str=final_str + s[i]
+   return final_str
+
+k = input();
+
+for t in range(0,int(k)):
+    str_1 = input();
+
+    val_1 = remove_dups(str_1)
+    val_2 = remove_dups(val_1)
+    while val_2 != val_1:
+        val_1 = val_2
+        val_2 =remove_dups(val_2)
+        
+
+    print(val_2)     

@@ -1,0 +1,48 @@
+#User function Template for python3
+
+
+
+class Solution:
+    
+    def countMin(self, Str):
+            
+        def XYZ(Str,l,h):    
+            
+            import sys
+            
+            if l>h:
+                return sys.max_size
+            elif l==h:
+                return 0
+            elif l==h-1 and Str[0]==Str[1]:
+                return 0
+            elif l==h-1 and Str[0]!=Str[1]:
+                return 1
+            elif Str[l]==Str[h]:
+                return XYZ(Str,l+1,h-1)   
+            elif Str[l]!=Str[h]:
+                return (min(XYZ(Str,l+1,h),XYZ(Str,l,h-1))+1)
+            
+            
+        return XYZ(Str,0,len(Str)-1)
+
+
+
+
+
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__':
+
+    t = int(input())
+
+    for _ in range(t):
+        Str = input()
+        
+
+        solObj = Solution()
+
+        print(solObj.countMin(Str))
+# } Driver Code Ends

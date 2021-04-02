@@ -1,0 +1,120 @@
+#function Template for python3
+
+"""
+# Node Class
+
+class node:
+    def __init__(self, val):
+        self.data = val
+        self.next = None
+
+"""
+
+class Solution:
+    #Function to reverse a linked list.
+    
+    
+    def reverseList(self, head):
+        # Code here
+        
+        # lis = Linked_List()
+        
+        # lis.insert(43)
+        # lis.insert(53)
+        # lis.insert(62)
+        
+        # return lis.head
+        
+        
+        temp=head
+        num=1
+        while(temp.next!=None and num<3):
+            temp = temp.next
+            num=num+1
+        
+        # end = temp    
+        
+        
+        if num<=1:
+            return head
+        if num==2:
+            temp = head.next
+            temp.next=head
+            head.next=None
+            head=temp
+        
+            return head
+        
+        
+        n=0
+        # temp=head
+        prev = head
+        curr = head.next
+        forw = head.next.next
+        
+        while(n==0):
+            if prev==head:
+                prev.next=None
+                
+            curr.next = prev 
+            
+            
+            prev = curr
+            curr = forw
+            
+            
+            if forw.next==None:
+                head = forw
+                forw.next = prev
+                return head
+            else:
+                forw = forw.next
+            
+              
+        
+        # return head    
+        
+        # print(end.data)
+
+#{ 
+#  Driver Code Starts
+# Node Class    
+class Node:
+    def __init__(self, val):
+        self.data = val
+        self.next = None
+
+# Linked List Class
+class Linked_List:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def insert(self, val):
+        if self.head is None:
+            self.head = Node(val)
+            self.tail = self.head
+        else:
+            self.tail.next = Node(val)
+            self.tail = self.tail.next
+
+def printList(head):
+    tmp = head
+    while tmp:
+        print(tmp.data, end=' ')
+        tmp=tmp.next
+    print()
+
+if __name__=='__main__':
+    for i in range(int(input())):
+        n = int(input())
+        arr = [int(x) for x in input().split()]
+        
+        lis = Linked_List()
+        for i in arr:
+            lis.insert(i)
+        
+        newHead = Solution().reverseList(lis.head)
+        printList(newHead)
+
+# } Driver Code Ends

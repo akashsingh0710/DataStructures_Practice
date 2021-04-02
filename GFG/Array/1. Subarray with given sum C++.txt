@@ -1,0 +1,81 @@
+// { Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+
+ // } Driver Code Ends
+
+
+class Solution{
+    public:
+    // Function to find the subarray with given sum k
+    // arr: input array
+    // n: size of array
+    vector<int> subarraySum(int arr[], int n, int s){
+        
+        int temp=0;
+        int i=0;
+        int k=0;
+        vector <int> gqlist1;
+        
+        while(i <n or k<n){
+            if(temp==s){
+                // list_1 =  [k+1,i];
+                gqlist1.push_back(k+1);
+                gqlist1.push_back(i);
+                return gqlist1;
+            }
+            
+            if (temp<s and i==n){
+                gqlist1.push_back(-1);       
+                return gqlist1;
+            }
+            
+            if (temp<s and i<n){
+                temp = temp+arr[i];
+                i=i+1;
+            }
+            
+            if(temp>s and k<n){
+                temp = temp-arr[k];
+                k =k+1;
+            }
+        }
+            // print("temp:",temp ,"at i" , i , "at k" , k)
+            
+        // if temp==s:
+        //      list_1 =  [k+1,n-1]
+        //      return list_1
+                
+        gqlist1.push_back(-1);       
+        return gqlist1;
+        
+    }
+};
+
+// { Driver Code Starts.
+
+int main()
+ {
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        long long s;
+        cin>>n>>s;
+        int arr[n];
+        
+        for(int i=0;i<n;i++)
+            cin>>arr[i];
+        Solution ob;
+        vector<int>res;
+        res = ob.subarraySum(arr, n, s);
+        
+        for(int i = 0;i<res.size();i++)
+            cout<<res[i]<<" ";
+        cout<<endl;
+        
+    }
+	return 0;
+}  // } Driver Code Ends

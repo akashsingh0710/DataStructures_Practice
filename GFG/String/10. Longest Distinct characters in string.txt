@@ -1,0 +1,60 @@
+#User function Template for python3
+
+class Solution:
+
+    def longestSubstrDitinctChars(self, S):
+        
+        A = [-1]*26
+        str_1=""
+        max_str=""
+        temp_str=""
+        i=0
+        while (i<len(S)):
+        # for i in range(0,len(S)):
+            # print("dss" , i)
+            
+            if A[ord(S[i])-ord('a')]==-1:
+                A[ord(S[i])-ord('a')]= i
+                str_1=str_1+S[i]
+                if(len(str_1)>len(max_str)):
+                    max_str=str_1
+                
+            else:
+                temp_str=str_1
+                i=A[ord(S[i])-ord('a')]
+                
+                # print(i)
+                A = [-1]*26
+                if(len(temp_str)>len(max_str)):
+                    max_str=temp_str
+                    # print(max_str)  
+                temp_str=""
+                str_1=""
+            i=i+1;
+              
+        return len(max_str)
+        
+        
+        
+        
+        
+        
+        
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__':
+
+    t = int(input())
+
+    for _ in range(t):
+        S = input()
+
+        solObj = Solution()
+
+        ans = solObj.longestSubstrDitinctChars(S)
+
+        print(ans)
+
+# } Driver Code Ends

@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<int> finalPrices(vector<int>& prices) {
+       
+        
+        int i,trmp,j;
+        
+        vector <int> vcc;
+        
+        for(i=0;i<prices.size()-1;i++)
+        {   j=i;
+         
+            trmp =  prices[i]-prices[i+1];
+            while(trmp<0 and j<prices.size()-1){
+            j++;
+            trmp =  prices[i]-prices[j];}
+            
+            if(trmp>=0) {  
+                vcc.push_back(trmp);}
+            else vcc.push_back(prices[i]);
+        }
+        
+        vcc.push_back(prices[i]);
+     return vcc;   
+    }
+    
+    
+};
+
