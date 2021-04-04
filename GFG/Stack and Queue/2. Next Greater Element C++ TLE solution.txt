@@ -1,0 +1,32 @@
+class Solution{
+    public:
+    vector<long long> nextLargerElement(vector<long long> arr, int n){
+        // Your code here
+        
+        
+        vector <long long> lis;
+        int i = 0;
+        for(int i=0; i<n ; i++){
+            int j=i+1;
+            while(j<n){
+                if (arr[j] > arr[i]){
+                    lis.push_back(arr[j]);
+                    j=n+1;}
+                else{
+                    j=j+1;}
+            }    
+            
+            
+            
+            if (j==n || i==n-1){    
+                lis.push_back(-1); 
+            }
+        
+        }
+        
+        
+        return lis  ;
+        
+    }
+
+};
